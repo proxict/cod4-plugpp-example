@@ -1,0 +1,9 @@
+#!/bin/bash
+
+[ -z "$1" ] && echo "Usage: $(basename "${0}") <path/to/CoD4x_Server/plugins>" >&2 && exit 1
+
+PLUGINS_PATH="$(readlink -f "${1}")"
+
+[ ! -f "${1}/pinc.h" ] && echo "Error: The supplied directory '${PLUGINS_PATH}' doesn't contain the required 'pinc.h' file" >&2 && exit 1
+
+CFLAGS=-m32 CXXFLAGS=-m32 cmake -S . -B build "-DCOD4_PLUGIN_DIR=${PLUGINS_PATH}" -DCMAKE_BUILD_TYPE=Release

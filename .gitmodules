@@ -1,0 +1,3 @@
+[submodule "external/cod4-plugpp"]
+	path = external/cod4-plugpp
+	url = https://github.com/proxict/cod4-plugpp.git
